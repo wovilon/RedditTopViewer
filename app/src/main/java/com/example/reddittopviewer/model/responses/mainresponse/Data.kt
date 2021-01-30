@@ -1,7 +1,7 @@
 import com.google.gson.annotations.SerializedName
 data class Data (
 
-	@SerializedName("approved_at_utc") val approved_at_utc : String,
+	@SerializedName("approved_at_utc") val approved_at_utc : String?,
 	@SerializedName("subreddit") val subreddit : String,
 	@SerializedName("selftext") val selftext : String,
 	@SerializedName("author_fullname") val author_fullname : String,
@@ -48,7 +48,7 @@ data class Data (
 	@SerializedName("score") val score : Int,
 	@SerializedName("approved_by") val approved_by : String,
 	@SerializedName("author_premium") val author_premium : Boolean,
-	@SerializedName("thumbnail") val thumbnail : String,
+	@SerializedName("thumbnail") val thumbnail : String?,
 	@SerializedName("edited") val edited : Boolean,
 	@SerializedName("author_flair_css_class") val author_flair_css_class : String,
 	@SerializedName("author_flair_richtext") val author_flair_richtext : List<Author_flair_richtext>,
@@ -101,9 +101,9 @@ data class Data (
 	@SerializedName("id") val id : String,
 	@SerializedName("is_robot_indexable") val is_robot_indexable : Boolean,
 	@SerializedName("report_reasons") val report_reasons : String,
-	@SerializedName("author") val author : String,
+	@SerializedName("author") val author : String?,
 	@SerializedName("discussion_type") val discussion_type : String,
-	@SerializedName("num_comments") val num_comments : Int,
+	@SerializedName("num_comments") val num_comments : Int?,
 	@SerializedName("send_replies") val send_replies : Boolean,
 	@SerializedName("whitelist_status") val whitelist_status : String,
 	@SerializedName("contest_mode") val contest_mode : Boolean,

@@ -1,8 +1,8 @@
 package com.example.reddittopviewer.model
 
-class Publication {
-    val author  = ""
-    val timeAgo = ""
-    val thumbnail = ""
-    val commentsNumber = 0
-}
+data class Publication (
+    val author: String  = "",
+    val timeAgo: String = "",
+    val thumbnail: String = "",
+    val commentsNumber: Int = 0
+)

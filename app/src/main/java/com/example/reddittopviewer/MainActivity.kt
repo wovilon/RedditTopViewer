@@ -31,12 +31,19 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MyLOG", response.body().toString())
 
                 val publications = ArrayList<Publication>()
-                if (response.body() != null ){
-                    /*for (i in response.body()!!.data.children){
-                        val publication = Publication()
-                        //publication.author = response.body().data.children[0].
-                    }*/
+                if (response.body()?.data != null ){
+                    for (item in response.body()!!.data.children){
+                        publications.add(
+                            Publication(
+                                item.data.author ?: "",
+                                item.data.approved_at_utc ?: "",
+                                item.data.thumbnail ?: "",
+                                item.data.num_comments ?: 0
+                            )
+                        )
+                    }
                 }
+                Log.d("MyLOG", "int")
             }
         })
     }
