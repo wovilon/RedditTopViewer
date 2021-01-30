@@ -1,5 +1,6 @@
 package com.example.reddittopviewer
 
+import ResponseMain
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,12 +20,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mService = Common.retrofitService
-        mService.getTopList().enqueue(object : Callback<String> {
-            override fun onFailure(call: Call<String>, t: Throwable) {
+        mService.getTopList().enqueue(object : Callback<ResponseMain> {
+            override fun onFailure(call: Call<ResponseMain>, t: Throwable) {
                 Log.d("MyLOG", "err")
             }
 
-            override fun onResponse(call: Call<String>, response: Response<String>) {
+            override fun onResponse(call: Call<ResponseMain>, response: Response<ResponseMain>) {
                 //adapter = MyMovieAdapter(baseContext, response.body() as MutableList<Movie>)
                 Log.d("MyLOG", response.body().toString())
             }
