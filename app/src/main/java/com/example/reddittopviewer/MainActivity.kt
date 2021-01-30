@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.reddittopviewer.Common.Common
 import com.example.reddittopviewer.io.API
+import com.example.reddittopviewer.model.Publication
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +29,14 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ResponseMain>, response: Response<ResponseMain>) {
                 //adapter = MyMovieAdapter(baseContext, response.body() as MutableList<Movie>)
                 Log.d("MyLOG", response.body().toString())
+
+                val publications = ArrayList<Publication>()
+                if (response.body() != null ){
+                    /*for (i in response.body()!!.data.children){
+                        val publication = Publication()
+                        //publication.author = response.body().data.children[0].
+                    }*/
+                }
             }
         })
     }

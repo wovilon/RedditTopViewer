@@ -12,11 +12,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Data (
+data class ResponseMain (
 
-	@SerializedName("modhash") val modhash : String,
-	@SerializedName("dist") val dist : Int,
-	@SerializedName("children") val children : List<Children>,
-	@SerializedName("after") val after : String,
-	@SerializedName("before") val before : String
+	@SerializedName("kind") val kind : String,
+	@SerializedName("data") val data : MainData
 )

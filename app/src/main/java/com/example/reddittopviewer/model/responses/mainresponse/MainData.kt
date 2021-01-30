@@ -12,9 +12,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
 
-data class Resized_static_icons (
+data class MainData (
 
-	@SerializedName("url") val url : String,
-	@SerializedName("width") val width : Int,
-	@SerializedName("height") val height : Int
+	@SerializedName("modhash") val modhash : String,
+	@SerializedName("dist") val dist : Int,
+	@SerializedName("children") val children : List<Children>,
+	@SerializedName("after") val after : String,
+	@SerializedName("before") val before : String
 )
