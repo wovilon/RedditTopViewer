@@ -53,6 +53,7 @@ class MainActivityAPI {
         if (value != null){
             hours = TimeUnit.MILLISECONDS.toHours((System.currentTimeMillis() - value * 1000)).toInt()
         }
+        if (value == 0.toLong()) hours = 0
         return  hours
     }
 }

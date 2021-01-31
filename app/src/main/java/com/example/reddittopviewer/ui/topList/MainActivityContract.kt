@@ -6,6 +6,8 @@ interface MainActivityContract {
 
     interface MainView {
         fun updateTop(items: ArrayList<Publication>)
+        fun showBigImage(url: String)
+        fun hideBigImage()
     }
 
     interface Presenter{

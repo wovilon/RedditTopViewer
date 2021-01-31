@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reddittopviewer.R
 import com.example.reddittopviewer.model.Publication
+import com.example.reddittopviewer.ui.topList.MainActivityContract
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.top_item.view.*
 
-class TopAdapter(val data: ArrayList<Publication>, val context: Context) :
+class TopAdapter(val data: ArrayList<Publication>, val mainView: MainActivityContract.MainView, val context: Context) :
     RecyclerView.Adapter<TopAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.top_item, parent, false))
@@ -23,6 +25,9 @@ class TopAdapter(val data: ArrayList<Publication>, val context: Context) :
         val item = data[position]
         holder.name.text = item.author
         holder.timeAgo.text = prepareTimeAgo(item.timeAgo)
+        holder.comments.text = item.commentsNumber.toString()
+        Picasso.get().load(item.thumbnail).into(holder.image);
+        holder.image.setOnClickListener { mainView.showBigImage(item.thumbnail) }
     }
 
 
