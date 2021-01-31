@@ -4,8 +4,10 @@ import ResponseMain
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.reddittopviewer.R
@@ -34,6 +36,13 @@ class MainActivity : AppCompatActivity(), MainActivityContract.MainView {
     override fun showBigImage(url: String) {
         Picasso.get().load(url).into(ivBigImage);
         ivBigImage.visibility = View.VISIBLE
+
+        MediaStore.Images.Media.insertImage(
+            contentResolver,
+            ivBigImage.drawable.toBitmap(),
+            "title",
+            "Image of title"
+        )
     }
 
     override fun hideBigImage() {
