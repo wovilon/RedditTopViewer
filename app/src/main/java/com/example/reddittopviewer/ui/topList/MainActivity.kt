@@ -4,14 +4,13 @@ import ResponseMain
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.reddittopviewer.Common.Common
-import com.example.reddittopviewer.R
-import com.example.reddittopviewer.io.API
-import com.example.reddittopviewer.model.Publication
+import androidx.recyclerview.widget.LinearLayoutManager
 
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.reddittopviewer.R
+import com.example.reddittopviewer.model.Publication
+import com.example.reddittopviewer.ui.adapters.TopAdapter
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(), MainActivityContract.MainView {
     val presenter = MainActivityPresenter(this)
@@ -24,7 +23,9 @@ class MainActivity : AppCompatActivity(), MainActivityContract.MainView {
     }
 
     override fun updateTop(items: ArrayList<Publication>) {
-        Log.d("MyLOG", "ttt")
+        val adapter = TopAdapter(items, this)
+        rvTop.adapter = adapter
+        rvTop.layoutManager = LinearLayoutManager(this)
     }
 
 

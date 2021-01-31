@@ -9,6 +9,7 @@ import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 class MainActivityAPI {
     lateinit var mService: API
@@ -34,7 +35,7 @@ class MainActivityAPI {
                             publications.add(
                                 Publication(
                                     item.data.author ?: "",
-                                    item.data.approved_at_utc ?: "",
+                                    calculateTimeAgo(item.data.approved_at_utc ?: 0),
                                     item.data.thumbnail ?: "",
                                     item.data.num_comments ?: 0
                                 )
@@ -46,4 +47,12 @@ class MainActivityAPI {
             })
 
         }
+
+    private fun calculateTimeAgo(value: Long?): Int{
+        var hours = 0;
+        if (value != null){
+            hours = TimeUnit.MILLISECONDS.toHours((System.currentTimeMillis() - value * 1000)).toInt()
+        }
+        return  hours
+    }
 }
