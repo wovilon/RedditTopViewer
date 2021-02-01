@@ -1,8 +1,11 @@
 package com.example.reddittopviewer.model
 
-data class Publication (
-    val author: String  = "",
-    val timeAgo: Int = 0,
-    val thumbnail: String = "",
-    val commentsNumber: Int = 0
-)
+import java.io.Serializable
+
+class Publication(authorfull: String, time: Int, imgurl: String, comments: Int) : Serializable{
+    var author: String  = authorfull
+    var timeAgo: Int = 0
+    var thumbnail: String = ""
+    var commentsNumber: Int = 0
+
+}
