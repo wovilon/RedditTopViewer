@@ -10,6 +10,7 @@ import com.example.reddittopviewer.model.Publication
 import com.example.reddittopviewer.ui.topList.MainActivityContract
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.top_item.view.*
+import java.lang.IllegalArgumentException
 
 class TopAdapter(val data: ArrayList<Publication>, val mainView: MainActivityContract.MainView, val context: Context) :
     RecyclerView.Adapter<TopAdapter.ViewHolder>() {
@@ -26,8 +27,10 @@ class TopAdapter(val data: ArrayList<Publication>, val mainView: MainActivityCon
         holder.name.text = item.author
         holder.timeAgo.text = prepareTimeAgo(item.timeAgo)
         holder.comments.text = item.commentsNumber.toString()
-        if (item.thumbnail != "default" || item.thumbnail != "")
-            Picasso.get().load(item.thumbnail).into(holder.image);
+        try{
+            if (item.thumbnail != "default" || item.thumbnail != "")
+                Picasso.get().load(item.thumbnail).into(holder.image);
+        }catch (e: IllegalArgumentException) {}
         holder.image.setOnClickListener { mainView.showBigImage(item.thumbnail) }
     }
 
