@@ -26,7 +26,8 @@ class TopAdapter(val data: ArrayList<Publication>, val mainView: MainActivityCon
         holder.name.text = item.author
         holder.timeAgo.text = prepareTimeAgo(item.timeAgo)
         holder.comments.text = item.commentsNumber.toString()
-        Picasso.get().load(item.thumbnail).into(holder.image);
+        if (item.thumbnail != "default" || item.thumbnail != "")
+            Picasso.get().load(item.thumbnail).into(holder.image);
         holder.image.setOnClickListener { mainView.showBigImage(item.thumbnail) }
     }
 
